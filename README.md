@@ -51,7 +51,14 @@ Recursive Plan 透過 Intermediate Codes Interpreter 中間程式解譯器轉成
 
 整個建立過程步驟如下：
 
-1. binary tree search. 
+1. binary tree search.  
+
+          QueryPlan
+                SubQueryPlan1
+                SubQueryPlan2
+
+
+>>>
 
           一顆查詢存取 (路徑) 樹由相互獨立的兩顆子（查詢存取路徑）樹組成。
 
