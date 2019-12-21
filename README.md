@@ -9,15 +9,15 @@
 
 範例：
 
-create_scan_plan
+          create_scan_plan
 
-create_seqscan_plan
+          create_seqscan_plan
 
-create_join_plan
+          create_join_plan
 
-create_mergejoin_plan
+          create_mergejoin_plan
 
-create_hashjoin_plan
+          create_hashjoin_plan
 
 # 查詢計畫的閱讀
 
