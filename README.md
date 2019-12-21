@@ -45,6 +45,31 @@ Recursive Plan 透過 Intermediate Codes Interpreter 中間程式解譯器轉成
 
 當 DBA 執行一筆查詢敘述後，獲得了錯誤的查詢結果，在系統中增加了一種新的最佳化方法，並對應地增加了數個不同類型的查詢計畫。爾後，由 DBA 檢視其中耗費時間長的查詢效能，其中瓶頸出在何處（哪個步驟那個階段？）。
 
+>>>
+
+                           Query Plan
+           
+      ---------------------------------------------------------------
+      
+      Sort (cost=   rows=2    width=30)
+      
+            Sort Key: (avg(sc.scroe))
+            
+            -> HashAggregate  (cost=   rows=2    width=30)
+            
+                   Group Key: class.classno, class.classname
+                   Filter: (avg(sc.score) > 60::numeric)
+                   -> Nested Loop (cost=   rows=55    width=30)
+                         Join Filter: (SubPlan 1)
+                         -> Hash Join (cost=   rows=37    width=17)
+                              Hash Cond: ((sc.cno)::text = (course.cno)::text)
+                              //-> ...
+                              
+                         -> Materialize ()
+                         -> Seq Scan on class
+                         -> Seq Scan on student
+                                   
+
 # 查詢計畫的思考
 
 在查詢計畫建立過程中，其依據的是一條最優查詢路徑，並且以 recursive 的方式，對該查詢存取路徑建立對應的查詢計畫。
@@ -72,8 +97,5 @@ Recursive Plan 透過 Intermediate Codes Interpreter 中間程式解譯器轉成
 # 執行計畫
 
 如上述，透過查詢存取路徑來建置查詢計畫，方才透過執行引擎進而解釋查詢計畫，並且執行。
-
-
-
 
 
