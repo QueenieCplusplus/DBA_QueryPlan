@@ -3,7 +3,7 @@
 
 # ICI 
 
-Recursive Plan 透過 Intermediate Codes Interpreter 中間程式解譯器轉成『 標準中間格式 』，則即便查詢引擎和存取引擎語言不同，也能物鳳地執行。
+Recursive Plan 透過 Intermediate Codes Interpreter 中間程式解譯器轉成『 標準中間格式 』，則即便查詢引擎和存取引擎語言不同，也能無縫地執行。
 
                                  存取介面 - 存取引擎
 
